@@ -1,0 +1,80 @@
+.postShare {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--cardColor);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.postShare > img {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+}
+.postShare > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+}
+.postShare > div > input {
+  background-color: var(--inputColor);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 17px;
+  border: none;
+  outline: none;
+}
+.postOptions {
+  display: flex;
+  justify-content: space-around;
+}
+.option {
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.option:hover {
+  cursor: pointer;
+}
+.postOptions > :nth-of-type(1) {
+  color: var(--photo);
+}
+.postOptions > :nth-of-type(2) {
+  color: var(--video);
+}
+.postOptions > :nth-of-type(3) {
+  color: var(--location);
+}
+.postOptions > :nth-of-type(4) {
+  color: var(--schedule);
+}
+.ps-button {
+  padding: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 17px;
+}
+
+.previewImage {
+  position: relative;
+}
+.dismissBtn {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(241, 8, 20);
+}
+.previewImage > img {
+  width: 100%;
+  max-height: 20rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-top: 5px;
+}

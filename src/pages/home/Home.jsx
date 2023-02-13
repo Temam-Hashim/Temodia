@@ -1,12 +1,15 @@
 import React from "react";
+import PostSection from "../../components/postSection/PostSection";
+import ProfileSection from "../../components/profileSection/ProfileSection";
+import RightSection from "../../components/rightSection/RightSection";
 import "./Home.css";
 
 function Home() {
   return (
     <div className="Home">
-      <div className="profileSection">Profile Section</div>
-      <div className="postSection">Post Section</div>
-      <div className="rightSection">Right Section</div>
+      <ProfileSection />
+      <PostSection />
+      <RightSection />
     </div>
   );
 }
