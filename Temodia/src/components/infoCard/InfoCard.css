@@ -1,0 +1,38 @@
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: var(--cardColor);
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 90%;
+}
+.infoHead {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.info > span:nth-of-type(2) {
+  color: gray;
+  margin-left: 0.5rem;
+}
+
+.logout-button {
+  width: 7rem;
+  height: 2rem;
+  margin-top: 3rem;
+  align-self: flex-end;
+}
+.edit-icon {
+  cursor: pointer;
+  color: var(--photo);
+}
+.edit-icon:hover {
+  color: var(--video);
+  font-size: 4rem;
+  padding: 3px;
+}

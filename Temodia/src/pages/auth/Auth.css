@@ -1,0 +1,89 @@
+.auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 4rem;
+  position: relative;
+}
+.auth > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.a-left {
+  gap: 2rem;
+}
+
+.web-name > h1 {
+  font-size: 3rem;
+  background-color: red;
+  /* create the gredient */
+  background-image: var(--buttonBg);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+.web-name > h6 {
+  font-size: 0.9rem;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif;
+  color: var(--photo);
+  margin-top: -32px;
+}
+.info-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.info-input {
+  border: none;
+  outline: none;
+  background-color: var(--inputColor);
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1;
+}
+.info-form > div {
+  display: flex;
+  gap: 1rem;
+  height: 2rem;
+  width: 90%;
+}
+.info-button {
+  height: 2rem;
+  align-self: flex-end;
+  width: 26%;
+}
+.auth-form {
+  background-color: var(--cardColor);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.login-form {
+  width: 20vw;
+}
+.auth-form > div {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.have-account {
+  font-size: 12px;
+  color: var(--photo);
+  cursor: pointer;
+  font-weight: 600;
+  font-style: italic;
+}
+.have-account:hover {
+  font-size: 13px;
+  padding: 2px;
+  color: rgb(204, 88, 38);
+}
