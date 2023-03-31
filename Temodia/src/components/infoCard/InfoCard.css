@@ -9,8 +9,9 @@
 }
 .infoHead {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  margin: 0;
 }
 .info {
   display: flex;
@@ -29,7 +30,10 @@
 }
 .edit-icon {
   cursor: pointer;
-  color: var(--photo);
+  color:cyan;
+  margin:2px;
+  font-weight: bold;
+  font-size: 15px;
 }
 .edit-icon:hover {
   color: var(--video);

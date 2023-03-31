@@ -5,9 +5,9 @@
   --gray: rgba(36, 45, 73, 0.65);
   --profileShadow: 0px 4px 17px 2px rgba(0, 0, 0, 0.25);
   --hrColor: #f9e9e9;
-  --cardColor: #f6ededf5;
+  --cardColor: #f1dfd6c2;
   --buttonBg: linear-gradient(98.63deg, #e41149 0%, #9915d6fe 100%);
-  --inputColor: rgba(40, 52, 62, 0.07);
+  --inputColor: rgb(255, 255, 255);
   --photo: #4cb256;
   --video: #4a4eb7;
   --location: #ef5757;

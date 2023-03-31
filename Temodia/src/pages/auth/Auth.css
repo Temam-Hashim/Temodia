@@ -35,12 +35,13 @@
   color: var(--photo);
   margin-top: -32px;
 }
-.info-form {
+.info-form  {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  width:440px
 }
 .info-input {
   border: none;
@@ -50,16 +51,16 @@
   padding: 20px;
   flex: 1;
 }
-.info-form > div {
+.auth-form > div {
   display: flex;
   gap: 1rem;
   height: 2rem;
-  width: 90%;
+  width: 100%;
 }
 .info-button {
-  height: 2rem;
+  height: 2.5rem;
   align-self: flex-end;
-  width: 26%;
+  width: 34%;
 }
 .auth-form {
   background-color: var(--cardColor);
@@ -76,14 +77,14 @@
 }
 
 .have-account {
-  font-size: 12px;
-  color: var(--photo);
+  font-size: 14px;
   cursor: pointer;
-  font-weight: 600;
-  font-style: italic;
+  font-weight: bold;
+   color: rgb(38, 149, 204);
 }
 .have-account:hover {
   font-size: 13px;
   padding: 2px;
-  color: rgb(204, 88, 38);
+  color: rgb(196, 21, 91);
+ 
 }

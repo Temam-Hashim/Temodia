@@ -9,14 +9,17 @@ function InfoCard() {
   return (
     <div className="infoCard">
       <div className="infoHead">
-        <h4>Your Profile Info </h4>
+        <h4>Your Profile</h4>
         <div>
-          <UilPen
-            width="1rem"
-            height="1.2rem"
-            className="edit-icon"
+          <button
+            className="button logout-button"
             onClick={() => setModalOpened(true)}
-          />
+          >
+            {" "}
+            <UilPen width="1rem" height="1.2rem" className="edit-icon" />
+            Edit Profile
+          </button>
+
           {/* import profile info modal */}
           <ProfileModal
             modelOpened={modelOpened}

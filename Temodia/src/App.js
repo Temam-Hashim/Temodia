@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/auth" element={<Auth/>} />
         {/* <Route path="/contact" element={<Contact />} />
         <Route path="/service" element={<Service />} />
         <Route path="/single/:id" element={<Single />} />

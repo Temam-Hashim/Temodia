@@ -4,8 +4,22 @@ import Profile from "../../img/profileImg.jpg";
 // import FollowersCard from "../followersCard/FollowersCard";
 import "./ProfileCard.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function ProfileCard({ profilePage }) {
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        await axios.get("/user").then((res) => {
+          console.log(res.data);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUser();
+  }, []);
   return (
     <div className="ProfileCard" style={{ borderRadius: 10 }}>
       <div className="profileImages">

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Modal, Button, Group, useMantineTheme } from "@mantine/core";
+// import { useState } from "react";
+import { Modal, useMantineTheme } from "@mantine/core";
 
 function ProfileModal({ modelOpened, setModalOpened }) {
   const theme = useMantineTheme();
