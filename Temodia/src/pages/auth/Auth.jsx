@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import "./Auth.css";
-import Logo from "../../img/logo-social.png";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { logIn, signUp } from "../../Actions/AuthAction";
+import Logo from "../../img/logo_1.png";
+// import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { logIn, signUp } from "./../../actions/AuthAction.js";
+import Loader from "../../components/loader/Loader";
 
 function Auth() {
   const dispatch = useDispatch();
-  const [login, setLogin] = useState(true);
+
+  const { loading, authData } = useSelector((state) => state.AuthReducer);
+
+  const [isLoginPage, setIsLoginPage] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
     email: "",
+    username: "",
     mobile: "",
     password: "",
     confirmPassword: "",
@@ -22,9 +27,24 @@ function Auth() {
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+
+  const ResetForm = () => {
+    setErrorMessage("");
+    setSuccessMessage("");
+    setData({
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      mobile: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!login) {
+    if (!isLoginPage) {
       if (data.firstName === "") {
         setErrorMessage(" first name is required");
       } else if (data.lastName === "") {
@@ -47,49 +67,41 @@ function Auth() {
         setErrorMessage("confirm password is not matching");
       } else {
         // dispatch the data
-        dispatch(signUp(data));
-        setErrorMessage("");
+        data.username =
+          data.email.split("@")[0] + Math.floor(0 + (999 - 0) * Math.random());
         data.mobile = "251" + data.mobile;
         try {
-          await axios
-            .post("http://localhost:5000/api/v1/user", {
-              username: data.email,
-              firstName: data.firstName,
-              lastName: data.lastName,
-              email: data.email,
-              password: data.password,
-              mobile: data.mobile,
-            })
-            .then((res) => {
-              if (res.data) {
-                setSuccessMessage("Registration Successful. Login Now");
-                console.log(res.data);
-              }
-            });
+          dispatch(signUp(data));
         } catch (error) {
           console.log(error);
         }
+
+        data.mobile = data.mobile.substring(3, 12);
+        setErrorMessage("");
+        // ResetForm();
       }
     } else {
-      dispatch(logIn(data));
+      if (data.email === "") {
+        setErrorMessage("username or email is required");
+      } else if (data.password === "") {
+        setErrorMessage("password is required");
+      } else {
+        setErrorMessage("");
+        dispatch(logIn(data));
+      }
+      setErrorMessage("something went wrong. please try again");
     }
   };
-  const ResetForm = () => {
-    setErrorMessage("");
-    setSuccessMessage("");
-    setData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      mobile: "",
-      password: "",
-      confirmPassword: "",
-    });
-  };
+
   return (
     <div className="auth">
       <div className="a-left">
-        <img src={Logo} alt="" className="logo-icon" />
+        <img
+          src={Logo}
+          alt=""
+          className="logo-icon"
+          style={{ width: 100, height: 100 }}
+        />
         <div className="web-name">
           <h1>Temodia</h1>
           <h6>explore your ideas throughout the world</h6>
@@ -98,8 +110,8 @@ function Auth() {
 
       <div className="a-right">
         <form className="info-form auth-form" onSubmit={handleSubmit}>
-          <h3>{login ? "LOGIN" : "SIGN UP"}</h3>
-          {!login && (
+          <h3>{isLoginPage ? "LOGIN" : "SIGN UP"}</h3>
+          {!isLoginPage && (
             <>
               <div>
                 <input
@@ -134,10 +146,10 @@ function Auth() {
 
           <div>
             <input
-              type="text"
+              type={isLoginPage ? "text" : "email"}
               className="info-input"
-              placeholder="Email Address"
-              name="email"
+              placeholder={isLoginPage ? "email or username" : "email address"}
+              name={"email" || "username"}
               onChange={handleChange}
               value={data.email}
             />
@@ -153,7 +165,7 @@ function Auth() {
               onChange={handleChange}
               value={data.password}
             />
-            {!login && (
+            {!isLoginPage && (
               <input
                 type="password"
                 className="info-input"
@@ -193,19 +205,29 @@ function Auth() {
 
           <div
             onClick={() => {
-              setLogin((prev) => !prev);
+              setIsLoginPage((prev) => !prev);
               ResetForm();
             }}
           >
             <span className="have-account">
-              {login
+              {isLoginPage
                 ? "Don't have an Account. SIGN UP"
                 : "Already have an Account. Login"}
             </span>
           </div>
 
-          <button className="button info-button" type="submit">
-            {login ? "LOGIN" : "SIGN UP"}
+          <button
+            className="button info-button"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? (
+              <Loader data=" Verifying " />
+            ) : isLoginPage ? (
+              "LOGIN"
+            ) : (
+              "SIGN UP"
+            )}
           </button>
         </form>
       </div>

@@ -1,10 +1,144 @@
-.profile {
-  position: relative;
-  display: grid;
-  grid-template-columns: 18rem auto 20rem;
-  gap: 1rem;
-  margin-left: 1rem;
+/* Mobile styles */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
+
+.left,
+.right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  z-index: 100;
+  overflow: auto;
+  background-color: #f6f6f6;
+  width: 100%;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.left.active,
+.right.active {
+  transform: translateX(0);
+}
+
+.middle {
+  flex: 1;
+  background-color: #fff;
+  height: 100vh;
+}
+
+.menu-toggle-left {
+  display: block !important;
+  position: fixed;
+  top: 10px;
+  left: 5px;
+  z-index: 200;
+  cursor: pointer;
+}
+.menu-toggle-right {
+  display: block !important;
+  position: fixed;
+  top: 10px;
+  right: 5px;
+  z-index: 200;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: block;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hamburger:before,
+.hamburger:after,
+.hamburger span {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+.menu-toggle-left:target ~ .menu-toggle-right,
+.menu-toggle-right:target ~ .menu-toggle-left {
+  display: none;
+}
+
+
+.hamburger:before {
+  top: 0;
+}
+
+.hamburger span {
+  top: 9px
+}
+
+.hamburger:after {
+  bottom: 0;
+
+}
+
+#left-toggle:checked ~ .left .content,
+#right-toggle:checked ~ .right .content {
+  display: block;
+}
+
+
+/* Desktop styles */
+@media screen and (min-width: 889px) {
+  .container {
+    flex-direction: row;
+
+  }
+
+  .left,
+  .right {
+    position: relative;
+    height: auto;
+    background-color: transparent;
+    width: 300px;
+    transform: translateX(0);
+    transition: none;
+  
+  }
+
+  .left .content,
+  .right .content {
+    display: block;
+  }
+
+  .left {
+    order: 1;
+  }
+
+  .middle {
+    flex: 1;
+    order: 2;
+  }
+
+  .right {
+    order: 3;
+    margin-left:10px;
+    margin-top:0;
+  }
+  .wrapper{
+    display: none;
+  }
+}
+
+
 .profile-center {
   display: flex;
   flex-direction: column;

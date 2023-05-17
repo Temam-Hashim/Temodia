@@ -5,7 +5,7 @@
   --gray: rgba(36, 45, 73, 0.65);
   --profileShadow: 0px 4px 17px 2px rgba(0, 0, 0, 0.25);
   --hrColor: #f9e9e9;
-  --cardColor: #f1dfd6c2;
+  --cardColor: #f1dfdac2;
   --buttonBg: linear-gradient(98.63deg, #e41149 0%, #9915d6fe 100%);
   --inputColor: rgb(255, 255, 255);
   --photo: #4cb256;
@@ -46,6 +46,11 @@
   color: var(--orange);
   background: transparent;
   border: 2px solid var(--orange);
+}
+
+.button:disabled{
+  background-color: silver;
+  pointer-events: none;
 }
 
 ::-webkit-scrollbar {

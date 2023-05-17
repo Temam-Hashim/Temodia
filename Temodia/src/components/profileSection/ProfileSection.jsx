@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LogoSearch from "../logoSearch/LogoSearch";
 import ProfileCard from "../profileCard/ProfileCard";
 import FollowersCard from "../followersCard/FollowersCard";
@@ -8,7 +8,7 @@ function ProfileSection() {
   return (
     <div className="profileSection">
       <LogoSearch />
-      <ProfileCard profilePage={false} />
+      <ProfileCard />
       <FollowersCard />
     </div>
   );

@@ -1,0 +1,58 @@
+.followersCard {
+    width: 100%;
+    border-radius: 0.7rem;
+    font-size: 13px;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cardColor);
+  }
+  .fc-title {
+    font-weight: 700;
+    color: var(--black);
+    font-size: 14px;
+    align-self: center;
+    border-bottom: 1px solid gray;
+    border-radius: 10px;
+  }
+  .followers {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    margin-bottom: 2px;
+  }
+  .followers > div {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2px;
+  }
+  .followerImg {
+    width: 3.2rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .name {
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  }
+  
+  .name > span:nth-of-type(1) {
+    font-weight: bold;
+  }
+  
+  .fc-button {
+    height: 2rem;
+    padding: 0px 20px 0px 20px;
+  }
+  .fcu-button {
+    height: 2rem;
+    padding: 0px 20px 0px 20px;
+    color:var(--orange);
+    border:2px solid var(--orange);
+    cursor: pointer;
+    background: transparent;
+  }
+  

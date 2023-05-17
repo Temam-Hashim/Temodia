@@ -12,6 +12,8 @@
   justify-content: space-between;
   align-items: center;
   margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgb(167, 44, 44);
 }
 .info {
   display: flex;
@@ -22,11 +24,20 @@
   margin-left: 0.5rem;
 }
 
-.logout-button {
+.edit-button {
   width: 7rem;
   height: 2rem;
   margin-top: 3rem;
   align-self: flex-end;
+}
+.logout-button {
+  width: 6rem;
+  height: 2rem;
+  margin-top: 3rem;
+  align-self: flex-end;
+  background: transparent;
+  background-color:#9f2020 !important;
+  color:white !important;
 }
 .edit-icon {
   cursor: pointer;

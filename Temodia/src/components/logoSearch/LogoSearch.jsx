@@ -1,6 +1,6 @@
 import React from "react";
 import "./LogoSearch.css";
-import logo from "../../img/logo-social.png";
+import logo from "../../img/logo_1.png";
 import { UilSearch } from "@iconscout/react-unicons";
 import { Link } from "react-router-dom";
 function LogoSearch() {
