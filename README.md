@@ -1,91 +1,70 @@
-# Temodia - Your All-in-One Social Media App
+# Getting Started with Create React App
 
-![Temodia Logo](temodia-logo.png)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Welcome to Temodia, your go-to social media platform designed to connect you with friends, family, and the world. Temodia is built using React, Node.js, and MongoDB, and it's your one-stop solution for all things social. Whether you want to share your life's moments, connect with friends, or explore exciting content, Temodia has got you covered.
+## Available Scripts
 
-## Features
+In the project directory, you can run:
 
-Temodia offers a wide range of features, making it the perfect place to socialize, share, and connect with others. Here are some of the key features:
+### `yarn start`
 
-1. **User Authentication**: Securely create an account, log in, and customize your profile.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-2. **News Feed**: Share your thoughts, photos, videos, and updates with your friends and followers.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-3. **Friend Requests**: Connect with people you know and accept friend requests from others.
+### `yarn test`
 
-4. **Messaging**: Send and receive private messages with your connections.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-5. **Notifications**: Stay updated with notifications for likes, comments, and friend requests.
+### `yarn build`
 
-6. **Explore Content**: Discover trending posts, explore new profiles, and find exciting content.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-7. **Customizable Profile**: Personalize your profile with a profile picture, cover photo, and bio.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-8. **Like and Comment**: Engage with posts by liking and commenting on them.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-9. **Privacy Settings**: Control who can see your content with customizable privacy settings.
+### `yarn eject`
 
-10. **Search**: Find specific users and content easily.
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-11. **Mobile Friendly**: Responsive design ensures you can use Temodia on any device.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Getting Started
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-To run Temodia on your local machine, follow these steps:
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-1. **Clone the Repository**:
-   ```
-   git clone [https://github.com/your-username/temodia.git]
-   ```
+## Learn More
 
-2. **Install Dependencies**:
-   - Navigate to the `client` directory and run:
-     ```
-     cd client
-     npm install
-     ```
-   - Navigate to the `server` directory and run:
-     ```
-     cd server
-     npm install
-     ```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-3. **Set Up MongoDB**:
-   - Create a MongoDB Atlas account or use a local MongoDB instance.
-   - Configure your MongoDB connection in `server/config/db.config.js`.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-4. **Start the Application**:
-   - In the `client` directory, run:
-     ```
-     npm start
-     ```
-   - In the `server` directory, run:
-     ```
-     npm start
-     ```
+### Code Splitting
 
-5. **Access Temodia**:
-   Open your web browser and visit `http://localhost:3000` to use Temodia.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-## Contributing
+### Analyzing the Bundle Size
 
-We welcome contributions from the open-source community. If you'd like to contribute to Temodia, please follow these guidelines:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-1. Fork the repository and create a new branch for your feature or bug fix.
+### Making a Progressive Web App
 
-2. Make your changes and ensure they are well-documented.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-3. Create a pull request with a clear description of your changes.
+### Advanced Configuration
 
-4. After review, your changes may be merged into the main repository.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-## License
+### Deployment
 
-Temodia is released under the MIT License. See the [LICENSE](LICENSE) file for details.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-## Contact
+### `yarn build` fails to minify
 
-If you have any questions or need assistance, feel free to contact us at [temamhashim3@gmail.com]
-
-Thank you for choosing Temodia! We hope you enjoy using our social media app to connect, share, and engage with others.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
