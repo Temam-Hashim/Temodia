@@ -9,7 +9,7 @@ import Loader from "../../components/loader/Loader";
 function Auth() {
   const dispatch = useDispatch();
 
-  const { loading, authData } = useSelector((state) => state.AuthReducer);
+  const { loading} = useSelector((state) => state.AuthReducer);
 
   const [isLoginPage, setIsLoginPage] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");

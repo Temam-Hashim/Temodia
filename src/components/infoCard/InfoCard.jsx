@@ -13,6 +13,7 @@ function InfoCard() {
   const dispatch = useDispatch();
   const params = useParams();
   const profileUserId = params.id;
+  
   const [profileUser, setProfileUser] = useState({});
   const user = useSelector((state) => state.AuthReducer.authData);
 
@@ -27,9 +28,7 @@ function InfoCard() {
     };
     fetchProfileUser();
   }, [profileUserId, user]);
-  // console.log(profileUser.data.firstName);
   const handleLogout = () => {
-    console.log(user.data._id);
     dispatch(logOut());
   };
   return (

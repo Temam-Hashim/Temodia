@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import LogoSearch from "../logoSearch/LogoSearch";
 import ProfileCard from "../profileCard/ProfileCard";
 import FollowersCard from "../followersCard/FollowersCard";

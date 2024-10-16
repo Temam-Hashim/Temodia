@@ -6,30 +6,38 @@ import { useSelector, useDispatch } from "react-redux";
 import * as USERS from "../../api/UserRequest.js";
 import { getTimeLinePosts } from "../../actions/PostAction.js";
 
+import { useParams } from "react-router-dom";
+
 function ProfileCard({ profilePage }) {
   const dispatch = useDispatch();
-  const [dbuser, setDbuser] = useState([]);
-  const user = useSelector((state) => state.AuthReducer.authData);
+  const [user, setUser] = useState([]);
+  const currentUser = useSelector((state) => state.AuthReducer.authData);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { posts, loading } = useSelector((state) => state.PostReducer);
 
+  const params = useParams();
+  const profileUserId = params.id || currentUser.data._id;
+
   useEffect(() => {
-    dispatch(getTimeLinePosts(user.data._id));
-    // const getUser = async () => {
-    //   const myUser = await USERS.getUser(user.data._id);
-    //   // console.log(myUser);
-    //   setDbuser(myUser.data);
-    // };
-    // getUser();
-  }, []);
+    dispatch(getTimeLinePosts(profileUserId));
+    const fetchProfileUser = async () => {
+      if (profileUserId === currentUser.data._id) {
+        setUser(currentUser);
+      } else {
+        const newProfileUser = await USERS.getUser(profileUserId);
+        setUser(newProfileUser);
+      }
+    };
+    fetchProfileUser();
+  }, [profileUserId, user, currentUser, dispatch]);
 
   return (
     <div className="ProfileCard" style={{ borderRadius: 10 }}>
       <div className="profileImages">
         <img
           src={
-            user.data.coverPicture
-              ? PF + user.data.coverPicture
+            user.data?.coverPicture
+              ? PF + user.data?.coverPicture
               : PF + "default_bg.jpg"
           }
           alt=""
@@ -37,8 +45,8 @@ function ProfileCard({ profilePage }) {
         />
         <img
           src={
-            user.data.profilePicture
-              ? PF + user.data.profilePicture
+            user.data?.profilePicture
+              ? PF + user.data?.profilePicture
               : PF + "default_profile.png"
           }
           alt=""
@@ -46,21 +54,21 @@ function ProfileCard({ profilePage }) {
       </div>
 
       <div className="profileName">
-        <span>{user.data.firstName + " " + user.data.lastName}</span>
-        <span>{user.data ? user.data.worksAt : "Write Your Profession"}</span>
+        <span>{user.data?.firstName + " " + user.data?.lastName}</span>
+        <span>{user.data ? user.data?.worksAt : "Write Your Profession"}</span>
       </div>
 
       <div className="followStatus">
         <hr />
         <div>
           <div className="follow">
-            <span>{user.data.following?.length}</span>
+            <span>{user.data?.following?.length}</span>
             <span>Following</span>
           </div>
 
           <div className="vl">|</div>
           <div className="follow">
-            <span>{user.data.followers?.length}</span>
+            <span>{user.data?.followers?.length}</span>
             <span>Followers</span>
           </div>
           {profilePage && (
@@ -68,7 +76,12 @@ function ProfileCard({ profilePage }) {
               <div className="vl">|</div>
               <div className="follow">
                 <span>
-                  {posts.filter((post) => post.userId === user.data._id).length}
+                  {loading ? (
+                    <span>Loading your posts...</span>
+                  ) : (
+                    posts.filter((post) => post.userId === user.data?._id)
+                      .length
+                  )}
                 </span>
                 <span>Posts</span>
               </div>
@@ -80,7 +93,7 @@ function ProfileCard({ profilePage }) {
       {profilePage ? (
         ""
       ) : (
-        <Link to={`/profile/${user.data._id}`} className="router-link">
+        <Link to={`/profile/${user.data?._id}`} className="router-link">
           <button className="button profile-button">My Profile</button>
         </Link>
       )}

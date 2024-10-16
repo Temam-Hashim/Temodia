@@ -1,0 +1,146 @@
+.Chat {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  gap:1rem;
+}
+.Chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--cardColor);
+  border-radius: 1rem;
+  padding: 1rem;
+  min-height: 80vh; /* Minimum height for the chat area */
+}
+
+.conversation:hover {
+  background: #80808038;
+  cursor: pointer;
+}
+
+.conversation {
+  border-radius: 0.5rem;
+  padding: 10px;
+}
+
+.conversation > div {
+  position: relative;
+}
+.online-dot {
+  background-color:#e82cf5;
+  border-radius: 50%;
+  position: absolute;
+  left: 2rem;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+/* Left Side */
+.Left-side-chat {
+  position: relative;
+  width: 22%;
+  background-color: var(--cardColor);
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+}
+.Chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.chatbox-empty-message {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  font-size: 20px;
+}
+/* Right Side */
+.Right-side-chat {
+  flex: 1;
+  gap: 1rem;
+}
+
+/* Shift right side when left side is open on small devices */
+.Right-side-chat.shifted {
+  margin-left: 22%;
+}
+
+/* Navbar (Hamburger) for small devices */
+.chat-navbar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 15;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.line {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: black;
+  margin: 5px auto;
+}
+
+/* Hidden by default for large devices */
+@media screen and (min-width: 769px) {
+  .chat-navbar {
+    display: none;
+  }
+
+  .Left-side-chat {
+    width: 22%; /* Maintain width for side by side layout */
+    transform: none; /* Always visible */
+  }
+
+  .Right-side-chat {
+    margin-left: 0;
+  }
+}
+
+/* For small devices (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .Chat {
+    flex-direction: column;
+  }
+
+  .Left-side-chat {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; /* Take full width */
+    height: 100%; /* Full height for overlay effect */
+    transform: translateX(-100%); /* Hidden by default */
+    z-index: 10;
+  }
+
+  .Left-side-chat.open {
+    transform: translateX(0); /* Slide in when open */
+  }
+
+  .Right-side-chat {
+    width: 100%; /* Take full width on small devices */
+  }
+}
+
+
+
+.chat-header{
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+.add-button{
+  width:100px;
+  height:40px;;
+  border: none;
+}

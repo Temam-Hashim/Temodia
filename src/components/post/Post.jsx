@@ -6,10 +6,9 @@ import Like from "../../img/like.png";
 import UnLike from "../../img/notlike.png";
 import "./Post.css";
 import { likePost } from "../../api/PostRequest.js";
-import * as USER from "../../api/UserRequest.js";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
+import { format } from "timeago.js";
 
 function Post({ data }) {
   const user = useSelector((state) => state.AuthReducer.authData);
@@ -42,20 +41,18 @@ function Post({ data }) {
           <img
             class="commenter-img"
             src={
-              data.userId.profilePicture
-                ? PF + data.userId.profilePicture
+              data?.userId?.profilePicture
+                ? PF + data?.userId?.profilePicture
                 : PF + "default_profile.png"
             }
             alt=""
           />
           <div className="user-detail">
             <h4 className="user-title">
-              {data.userId.firstName + " " + data.userId.lastName}
+              {data?.userId?.firstName + " " + data?.userId?.lastName}
             </h4>
-            <span>
-              {data.createdAt.substring(0, 10) +
-                " at " +
-                data.createdAt.substring(12, 19)}
+            <span style={{marginLeft:-20}}>
+              {format(data?.createdAt)}
             </span>
           </div>
         </div>
@@ -63,10 +60,10 @@ function Post({ data }) {
 
       {/* post detail */}
       <div className="detail">
-        <span> {data.desc}</span>
+        <span> {data?.desc}</span>
       </div>
       <img
-        src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ""}
+        src={data?.image ? process.env.REACT_APP_PUBLIC_FOLDER + data?.image : ""}
         alt=""
       />
       {/* </a> */}

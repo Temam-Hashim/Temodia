@@ -1,5 +1,5 @@
 import "./FollowersCard.css";
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 
 import { useState, useEffect } from "react";
 import * as USERS from "../../api/UserRequest.js";
@@ -10,14 +10,12 @@ function FollowersCard() {
   const [followers, setFollowers] = useState([]);
 
   useEffect(() => {
-    const fetchFollowers = async () => {
+    const fetchAllUses = async () => {
       const lists = await USERS.getAllUser();
       setFollowers(lists.data);
-      // console.log(lists.data);
     };
-    fetchFollowers();
+    fetchAllUses();
   }, []);
-  // console.log(followers);
 
   return (
     <div className="followersCard">
@@ -26,6 +24,7 @@ function FollowersCard() {
         if (user.data._id !== person._id) {
           return <Follower person={person} key={id} />;
         }
+        return  null;
       })}
     </div>
   );

@@ -11,7 +11,7 @@ const CommentReducer = (state=initialState,action)=>{
                return {...state, commenting:false, error:true}
 
            case "RETRIEVE_START":
-                return {...state, commenting:false, error:true}
+                return {...state, commenting:false, error:false}
            case "RETRIEVE_SUCCESS":
                  return {...state,comments:action.data,commenting:false,error:false  }
            case "RETRIEVE_FAIL":

@@ -3,30 +3,29 @@ import "./Comment.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as CommentAction from "../../actions/CommentAction";
-import * as CommentRequest from "../../api/CommentRequest";
 import Loader from "../loader/Loader";
+import { format } from "timeago.js";
 
 function Comment({ modelOpened, setModalOpened, data }) {
   const dispatch = useDispatch();
   const theme = useMantineTheme();
   const [newComment, setNewComment] = useState("");
-  const [comment, setComment] = useState([]);
   const [error, setError] = useState("");
-  const user = useSelector((state) => state.AuthReducer.authData);
-  const commenting = useSelector((state) => state.CommentReducer.commenting);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+
   useEffect(() => {
-    // get comments
-    const id = setInterval(() => {
-      const getComments = async () => {
-        const res = await CommentRequest.getPostComment(data._id);
-        setComment(res.data);
-      };
-      getComments();
-    }, 1000);
-    return () => clearInterval(id);
-  }, [newComment !== ""]);
+    if (modelOpened && data?._id) {
+      dispatch(CommentAction.getPostComment(data._id));
+    }
+  }, [modelOpened, data._id, dispatch]);
+
+    const user = useSelector((state) => state.AuthReducer.authData);
+    const { commenting, comments } = useSelector(
+      (state) => state.CommentReducer
+    );
+
+
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
@@ -67,32 +66,32 @@ function Comment({ modelOpened, setModalOpened, data }) {
               <img
                 class="commenter-img"
                 src={
-                  user.data
-                    ? PF + data.userId.profilePicture
+                  data?.userId.profilePicture
+                    ? PF + data?.userId.profilePicture
                     : PF + "default_profile.png"
                 }
                 alt=""
               />
 
               <h4 className="title">
-                {data.userId.firstName + " " + data.userId.lastName}
+                {data?.userId?.firstName + " " + data?.userId?.lastName}
               </h4>
             </div>
             <div className="detail">
               <span> {data.desc}</span>
             </div>
 
-            <img src={data.image ? PF + data.image : ""} alt="" />
+            <img src={data?.image ? PF + data?.image : ""} alt="" />
           </div>
           {/* list of comments */}
-          <h4 className="title">Comments ({comment.length})</h4>
-          {comment.length === 0 ? (
+          <h4 className="title">Comments ({comments?.length})</h4>
+          {comments?.length === 0 ? (
             <div style={{ margin: 10, padding: 10, alignItems: "center" }}>
               No Comments Yet
             </div>
           ) : (
             <div className="comment-list">
-              {comment.map((cmt) => {
+              {comments?.map((cmt) => {
                 return (
                   <>
                     <div className="comment-row">
@@ -100,21 +99,19 @@ function Comment({ modelOpened, setModalOpened, data }) {
                         className="commenter-img"
                         src={
                           process.env.REACT_APP_PUBLIC_FOLDER +
-                          cmt.profilePicture
+                          cmt?.profilePicture
                         }
                         alt=""
                       />
                       <div className="comment-column">
-                        <span className="username">{cmt.name}</span>
+                        <span className="username">{cmt?.name}</span>
                         <span className="comment">
-                          {cmt.message}
+                          {cmt?.message}
 
                           <br />
                           <small className="time">
                             {" "}
-                            {cmt.createdAt.substring(0, 10) +
-                              " at " +
-                              cmt.createdAt.substring(12, 19)}
+                            {format(cmt?.createdAt)}
                           </small>
                         </span>
                       </div>
@@ -133,9 +130,9 @@ function Comment({ modelOpened, setModalOpened, data }) {
                 <img
                   class="commenter-img"
                   src={
-                    user.data
+                    user?.data
                       ? process.env.REACT_APP_PUBLIC_FOLDER +
-                        user.data.profilePicture
+                        user?.data?.profilePicture
                       : ""
                   }
                   alt=""
